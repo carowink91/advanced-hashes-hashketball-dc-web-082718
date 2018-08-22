@@ -120,6 +120,9 @@ end
 def num_points_scored (player_name)
   points_scored = 0
 
+  player_hashes[player_name][:points]
+  binding.pry
+
   game_hash.each do |location, team_info|
     team_info[:players].each do |name, player_stats|
       if name == player_name
@@ -221,7 +224,7 @@ end
 
 def big_shoe_rebounds
   shoes_array = []
-  
+
   player_hashes.each do |name, player_stats|
     shoes_array << player_stats[:shoe]
   end

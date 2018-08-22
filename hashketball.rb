@@ -119,7 +119,7 @@ end
 
 def num_points_scored (player_name)
   points_scored = 0
-  
+
   game_hash.each do |location, team_info|
     team_info[:players].each do |name, player_stats|
       if name == player_name
@@ -135,7 +135,7 @@ end
 
 def shoe_size (player_name)
   shoe_size = 0
-  
+
   game_hash.each do |location, team_info|
     team_info[:players].each do |name, player_stats|
       if name == player_name
@@ -151,7 +151,7 @@ end
 
 def get_team_hash (team_name)
   team_hash = {}
-  
+
   game_hash.each do |location, team_info|
     if team_info[:team_name] == team_name
       team_hash = team_info
@@ -167,7 +167,7 @@ end
 
 def team_names
   name_array = []
-  
+
   game_hash.each do |location, team_info|
     team_info.each do |team_stat, fact|
       if team_stat == :team_name
@@ -189,7 +189,7 @@ end
 
 def player_stats (player_name)
   stat_hash = {}
-  
+
   game_hash.each do |location, team_info|
     team_info.each do |team_stat, fact|
       team_info[:players].each do |name, player_stats|
@@ -205,12 +205,13 @@ end
 
 def player_hashes
   game_hash[:away][:players].merge(game_hash[:home][:players])
+  binding.pry
 end
 
 
 def player_names_array
   player_names = []
-  
+
   player_hashes.each do |name, player_stats|
     player_names << name
   end
@@ -224,7 +225,7 @@ def big_shoe_rebounds
   player_hashes.each do |name, player_stats|
     shoes_array << player_stats[:shoe]
   end
-  
+
   biggest_shoe_player = player_names_array[shoes_array.each_with_index.max[1]]
   player_hashes[biggest_shoe_player][:rebounds]
 end
